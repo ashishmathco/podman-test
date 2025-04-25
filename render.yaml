@@ -7,7 +7,9 @@ services:
     dockerfilePath: ./backend/Dockerfile
     envVars:
       - key: DATABASE_URL
-        value: "postgresql://postgres:ashishlal@db:5432/itemsdb"
+        fromDatabase:
+          name: itemsdb
+          property: connectionString
     plan: free
     regions:
       - oregon
@@ -22,9 +24,10 @@ services:
     regions:
       - oregon
 
-  - type: database
-    name: db
-    databaseUrl: postgresql://postgres:ashishlal@localhost:5432/itemsdb
+databases:
+  - name: itemsdb
+    engine: postgres
+    version: "14"
     plan: free
     envVars:
       - key: POSTGRES_USER
