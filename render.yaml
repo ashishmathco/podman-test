@@ -11,8 +11,6 @@ services:
           name: itemsdb
           property: connectionString
     plan: free
-    regions:
-      - oregon
 
   - type: web
     name: frontend
@@ -21,20 +19,8 @@ services:
     startCommand: "npm start"
     dockerfilePath: ./frontend/Dockerfile
     plan: free
-    regions:
-      - oregon
 
 databases:
   - name: itemsdb
-    engine: postgres
-    version: "14"
+    databaseName: itemsdb
     plan: free
-    envVars:
-      - key: POSTGRES_USER
-        value: "postgres"
-      - key: POSTGRES_PASSWORD
-        value: "ashishlal"
-      - key: POSTGRES_DB
-        value: "itemsdb"
-    regions:
-      - oregon
