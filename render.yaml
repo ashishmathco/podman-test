@@ -3,6 +3,7 @@ services:
     name: fullstack-app
     env: docker
     plan: free
+    dockerComposePath: ./docker-compose.yml
     repo: https://github.com/ashishmathco/podman-test
     dockerCommand: docker-compose up --build
     envVars:
