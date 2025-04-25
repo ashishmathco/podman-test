@@ -1,6 +1,0 @@
-services:
-  - type: docker
-    name: fullstack-app
-    repo: https://github.com/ashishmathco/podman-test
-    dockerComposePath: ./docker-compose.yml
-    plan: free
