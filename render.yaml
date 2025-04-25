@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: backend
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "uvicorn backend.main:app --host 0.0.0.0 --port 8000"
+    dockerfilePath: ./backend/Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        value: "postgresql://postgres:ashishlal@db:5432/itemsdb"
+    plan: free
+    regions:
+      - oregon
+
+  - type: web
+    name: frontend
+    env: node
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    dockerfilePath: ./frontend/Dockerfile
+    plan: free
+    regions:
+      - oregon
+
+  - type: database
+    name: db
+    databaseUrl: postgresql://postgres:ashishlal@localhost:5432/itemsdb
+    plan: free
+    envVars:
+      - key: POSTGRES_USER
+        value: "postgres"
+      - key: POSTGRES_PASSWORD
+        value: "ashishlal"
+      - key: POSTGRES_DB
+        value: "itemsdb"
+    regions:
+      - oregon
