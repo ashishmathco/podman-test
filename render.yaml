@@ -1,11 +1,6 @@
 services:
-  - type: web
+  - type: docker
     name: fullstack-app
-    env: docker
-    plan: free
-    dockerComposePath: ./docker-compose.yml
     repo: https://github.com/ashishmathco/podman-test
-    dockerCommand: docker-compose up --build
-    envVars:
-      - key: PORT
-        value: 3000
+    dockerComposePath: ./docker-compose.yml
+    plan: free
